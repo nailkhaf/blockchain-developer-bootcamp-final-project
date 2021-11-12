@@ -8,6 +8,7 @@ import {
   onMount,
   Switch,
   Match,
+  Show
 } from "solid-js";
 import {
   getAccount,
@@ -39,18 +40,10 @@ export default function Connect(props) {
     unsubscribe?.();
     unsubscribe = subscribeProvider(provider(), {
       onAccountsChanged: (account) => {
-        console.log("onAccountsChanged");
         setAccount(account);
       },
       onChainChanged: () => {
-        console.log("onChainChanged");
         updateProvider();
-      },
-      onConnect: () => {
-        console.log("onConnect");
-      },
-      onDisconnect: () => {
-        console.log("onDisconnect");
       },
     });
   });
